@@ -24,7 +24,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const res = await axios.post(BASE_URL + '/login',{
+            const res = await axios.post(BASE_URL + 'login',{
                 emailId: loginForm.email.trim(),
                 password: loginForm.password.trim()
             },{withCredentials: true})
@@ -34,7 +34,7 @@ const Login = () => {
                 return navigate('/')
             }
         } catch (error) {
-            throw new Error(`ERROR: ${error}`)
+            console.error(error)
         }
     }
 
