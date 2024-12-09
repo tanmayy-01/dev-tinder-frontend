@@ -16,16 +16,18 @@ const Login = () => {
         }));
     };
 
-    // console.log('formdata: ', loginForm)
     const handleLogin = async () => {
         try {
             const res = await axios.post('http://localhost:4444/login',{
                 emailId: loginForm.email.trim(),
                 password: loginForm.password.trim()
-            })
-            console.log('res: ', res)
+            },{withCredentials: true})
+            const {status, message} = res.data;
+            if(status) {
+                console.log('messsaage: ', message)
+            }
         } catch (error) {
-            // 
+            throw new Error(`ERROR: ${error}`)
         }
     }
 
